@@ -652,33 +652,6 @@
                 </div>
             </div>
 
-            <!-- Only Ladies -->
-            <div class="price-box">
-                <div class="price-box-title">
-                    Only Ladies <span class="subtitle">3 PM - 4 PM</span>
-                </div>
-                <div class="price-row">
-                    <span class="price-name">Admission Fee</span>
-                    <span class="price-value">₹1,000</span>
-                </div>
-                <div class="price-row">
-                    <span class="price-name">1 Month</span>
-                    <span class="price-value">₹900</span>
-                </div>
-                <div class="price-row">
-                    <span class="price-name">3 Months</span>
-                    <span class="price-value">₹2,500</span>
-                </div>
-                <div class="price-row">
-                    <span class="price-name">6 Months</span>
-                    <span class="price-value">₹4,500</span>
-                </div>
-                <div class="price-row">
-                    <span class="price-name">12 Months (Locker Free + 2 Steam Bath)</span>
-                    <span class="price-value">₹8,000</span>
-                </div>
-            </div>
-
             <!-- Students -->
             <div class="price-box">
                 <div class="price-box-title">
@@ -703,33 +676,6 @@
                 <div class="price-row">
                     <span class="price-name">12 Months (Locker Free + 2 Steam Bath)</span>
                     <span class="price-value">₹7,000</span>
-                </div>
-            </div>
-
-            <!-- Happy Hour -->
-            <div class="price-box">
-                <div class="price-box-title">
-                    Happy Hour <span class="subtitle">12 PM - 3 PM</span>
-                </div>
-                <div class="price-row">
-                    <span class="price-name">Admission Fee</span>
-                    <span class="price-value">₹1,000</span>
-                </div>
-                <div class="price-row">
-                    <span class="price-name">1 Month</span>
-                    <span class="price-value">₹900</span>
-                </div>
-                <div class="price-row">
-                    <span class="price-name">3 Months</span>
-                    <span class="price-value">₹2,500</span>
-                </div>
-                <div class="price-row">
-                    <span class="price-name">6 Months</span>
-                    <span class="price-value">₹4,500</span>
-                </div>
-                <div class="price-row">
-                    <span class="price-name">12 Months (Locker Free + 2 Steam Bath)</span>
-                    <span class="price-value">₹8,000</span>
                 </div>
             </div>
 
@@ -945,6 +891,17 @@
         // Load Gallery Images dynamically from images folder
         const galleryContainer = document.getElementById('gallery-container');
         const maxImageCheck = 25; // Updated to check up to 25 images (gym1.jpg to gym25.jpg)
+
+        // Ensure gymX.jpg always appears first
+        const featuredImg = new Image();
+        const featuredPath = 'images/gymX.jpg';
+        featuredImg.onload = function() {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            galleryItem.innerHTML = `<img src="${featuredPath}" alt="Ganapati Gym Featured Photo">`;
+            galleryContainer.prepend(galleryItem);
+        };
+        featuredImg.src = featuredPath;
 
         for (let i = 1; i <= maxImageCheck; i++) {
             const img = new Image();
